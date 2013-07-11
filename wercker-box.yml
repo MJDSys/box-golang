@@ -1,4 +1,4 @@
-name: golang
+name: golang-riak
 version: 0.9.4
 inherits: wercker/ubuntu12.04-webessentials@0.0.3
 type : main
@@ -12,7 +12,11 @@ packages :
   - git
   - mercurial
   - bzr
+  - riak
 script : |
+  curl http://apt.basho.com/gpg/basho.apt.key | sudo apt-key add -
+  sudo bash -c "echo deb http://apt.basho.com $(lsb_release -sc) main > /etc/apt/sources.list.d/basho.list"
+  sudo apt-get install riak
   sudo apt-get update
   sudo apt-get install bzr
   sudo apt-get install mercurial
@@ -20,6 +24,9 @@ script : |
   sudo tar -C /usr/local -xzf go1.1.linux-amd64.tar.gz
   echo "export PATH=$PATH:/usr/local/go/bin" | sudo tee -a /etc/profile
   rm go1.1.linux-amd64.tar.gz
+  sudo sed -e 's/_bitcask_/_eleveldb_/' /etc/riak/app.config -i
+  sudo service riak start
+  sleep 10
 
 box-detect:
   priority : 900
