@@ -62,6 +62,7 @@ default-build:
                 cd $WERCKER_SOURCE_DIR
                 go version
                 go get ./...
+                if test "${GOLANG_EXTRA_REPOS}" == set; then go get ${GOLANG_EXTRA_REPOS}; fi
           - script:
               name: go build
               code: |
