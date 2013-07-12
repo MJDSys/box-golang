@@ -1,6 +1,6 @@
-box-golang
+golang-riak
 ==========
 
-Adds golang support to wercker with this custom box
+Adds golang support to wercker with this custom box.  It includes a copy of riak for testing.
 
-[![Wercker status](https://app.wercker.com/status/9a43fc6342e90e671219baba2ee9cbae/m)](https://app.wercker.com/project/bykey/9a43fc6342e90e671219baba2ee9cbae)
+[![Wercker status](https://app.wercker.com/status/e2e7768ce350a93a0710cebbe78b565b/m)](https://app.wercker.com/project/bykey/e2e7768ce350a93a0710cebbe78b565b)
